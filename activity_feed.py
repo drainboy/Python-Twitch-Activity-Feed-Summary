@@ -60,11 +60,15 @@ def get_followers(tags):
     usernames = {}
     for tag in tags:
         # Debug code to find out what the tag has
-        print(tag.get_text())
+        # print(tag.get_text())
         result = re.search(f"(.*)Followed .* • (.*)",tag.get_text())
+        if not result:
+            result = re.search(f"(.*Raided).* • (.*)", tag.get_text())
         # print(result)
         if result:
             name = result.group(1)
+            if "raided" in name.lower():
+                name = name[:-6] + "*"
             date = get_date(result.group(2))
             usernames[name] = date
     return usernames
