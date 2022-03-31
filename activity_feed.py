@@ -1,11 +1,18 @@
 from bs4 import BeautifulSoup
 import re
 import datetime
+import argparse
 
-TWITCH_NAME = input("Enter Twitch channel name: ")
+TWITCH_NAME = ""
 
 def main():
-    filename = f"{TWITCH_NAME} _ Activity Feed - Twitch.html"
+    args = arg_parser()
+    TWITCH_NAME = args.twitch_user
+
+    if not TWITCH_NAME:
+        TWITCH_NAME = input("Enter Twitch channel name: ")
+
+    filename = f"{TWITCH_NAME} | Activity Feed - Twitch.html" #need to use glob to find file
     tag = "div"
     tag_class = "ScTransitionBase-sc-eg1bd7-0 jddxRW tw-transition"
     website = f"https://www.twitch.tv/popout/moderator/{TWITCH_NAME}/activity-feed"
@@ -17,6 +24,12 @@ def main():
     followers = get_followers(tags)
     write_to_file(convert_to_text_list(followers), "followers.txt")
 
+
+def arg_parser():
+    parser = argparse.ArgumentParser(description="Twitch Activity Feed HTML converter.")
+    parser.add_argument("twitch_user", nargs="?")
+    args = parser.parse_args()
+    return args
 
 def convert_to_text_list(dictionary):
     output = []
@@ -46,7 +59,10 @@ def get_tag(soup, tag, tag_class):
 def get_followers(tags):
     usernames = {}
     for tag in tags:
-        result = re.search(f"(.*)(?: • )?Followed {TWITCH_NAME} • (.*)",tag.get_text())
+        # Debug code to find out what the tag has
+        print(tag.get_text())
+        result = re.search(f"(.*)Followed .* • (.*)",tag.get_text())
+        # print(result)
         if result:
             name = result.group(1)
             date = get_date(result.group(2))
