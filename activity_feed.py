@@ -14,7 +14,7 @@ def main():
 
     filename = f"{TWITCH_NAME} | Activity Feed - Twitch.html" #need to use glob to find file
     tag = "div"
-    tag_class = "ScTransitionBase-sc-eg1bd7-0 jddxRW tw-transition"
+    tag_class = "tw-transition"
     website = f"https://www.twitch.tv/popout/moderator/{TWITCH_NAME}/activity-feed"
 
     print("Do download html of site to get updated list")
