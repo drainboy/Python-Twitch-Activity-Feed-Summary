@@ -1,6 +1,5 @@
 # Twitch Activity Feed Summary
-A Python script that summaries the HTML file of Twitch activity feed
-
+A Python script that summaries the HTML file of Twitch activity feed   
 Script only stores and prints out the followers(to .txt) based on date
 
 Doesn't store redeems and raids YET
