@@ -8,7 +8,7 @@ Doesn't store redeems and raids YET
 ----
 
 Step 1 : Save Twitch Activity Feed webpage   
-https://www.twitch.tv/popout/moderator/{insert username}/activity-feed
+'''https://www.twitch.tv/popout/moderator/{insert username}/activity-feed'''
 
 ![Activity Feed Saving](save_as.gif)
 
