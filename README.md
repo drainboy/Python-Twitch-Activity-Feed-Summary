@@ -9,7 +9,7 @@ Doesn't store redeems and raids YET
 ## Step 1 : Save Twitch Activity Feed webpage   
 ```https://www.twitch.tv/popout/moderator/{insert username}/activity-feed```
 
-![Activity Feed Saving](save_as.gif)
+![Activity Feed Saving](https://media.giphy.com/media/YtZJ6v1TdZhfC7fvoV/giphy.gif)
 
 ## Step 2 : Run Python Script   
 python3 activity-feed.py {insert username}
